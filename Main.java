@@ -11,7 +11,6 @@ public class Main {
         int[] SIZE = {512, 8192, 65536};
         String[] STATUS = {"random", "sorted", "reversed"};
         Runtime runtime = Runtime.getRuntime();
-        System.gc();
         double startTime, endTime, beforeUsedMemory, afterUsedMemory, memoryUsed, timeTaken;
 
         for (int size : SIZE) {
@@ -21,6 +20,7 @@ public class Main {
                 // Merge Sort
                 int[] copyArray = Arrays.copyOf(array, array.length);
                 startTime = System.currentTimeMillis();
+                System.gc();
                 beforeUsedMemory = runtime.totalMemory() - runtime.freeMemory();
                 MergeSort.sort(copyArray, 0, copyArray.length - 1);
                 afterUsedMemory = runtime.totalMemory() - runtime.freeMemory();
@@ -33,6 +33,7 @@ public class Main {
                 // Two-pivot block quicksort
                 copyArray = Arrays.copyOf(array, array.length);
                 startTime = System.currentTimeMillis();
+                System.gc();
                 beforeUsedMemory = runtime.totalMemory() - runtime.freeMemory();
                 TwoPivotBlockQuicksort.sort(copyArray);
                 afterUsedMemory = runtime.totalMemory() - runtime.freeMemory();

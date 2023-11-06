@@ -11,7 +11,7 @@ public class DataGenerator {
         
         for (int size : SIZES) {
             int[] randomizedData = new int[size];
-            Random rand = new Random();
+            Random rand = new Random(21);
 
             for (int i = 0; i < size; i++) {
                 randomizedData[i] = rand.nextInt(size) + 1;
